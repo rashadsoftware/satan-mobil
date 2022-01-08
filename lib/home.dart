@@ -15,31 +15,47 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentTab = 0;
-  final List<Widget> screens = [Dashboard(), Favorite(), Message(), Profile()];
+  final List<Widget> screens = [
+    const Dashboard(),
+    const Favorite(),
+    const Message(),
+    const Profile()
+  ];
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Dashboard();
+  Widget currentScreen = const Dashboard();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageStorage(
-        child: currentScreen,
-        bucket: bucket,
+      appBar: AppBar(
+        title: const Text("Satan.az"),
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        elevation: 0,
+        titleTextStyle: const TextStyle(
+            color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 19),
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+      body: SafeArea(
+        child: PageStorage(
+          child: currentScreen,
+          bucket: bucket,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           setState(() {
-            currentScreen = Add();
+            currentScreen = const Add();
             currentTab = 5;
           });
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
-        child: Container(
+        child: SizedBox(
           height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +67,7 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Dashboard();
+                        currentScreen = const Dashboard();
                         currentTab = 0;
                       });
                     },
@@ -75,7 +91,7 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Favorite();
+                        currentScreen = const Favorite();
                         currentTab = 1;
                       });
                     },
@@ -104,7 +120,7 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Message();
+                        currentScreen = const Message();
                         currentTab = 3;
                       });
                     },
@@ -128,7 +144,7 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = Profile();
+                        currentScreen = const Profile();
                         currentTab = 4;
                       });
                     },
