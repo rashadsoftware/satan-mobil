@@ -1,3 +1,6 @@
+import 'package:elanlar/component/banner_item.dart';
+import 'package:elanlar/component/category_item.dart';
+import 'package:elanlar/component/section_title.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -93,107 +96,39 @@ class _DashboardState extends State<Dashboard> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: SizedBox(
-                      width: 242,
-                      height: 100,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              "images/banner_1.png",
-                              fit: BoxFit.cover,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      const Color(0xff343434).withOpacity(0.4),
-                                      const Color(0xff343434).withOpacity(0.15)
-                                    ]),
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
-                              child: Text.rich(
-                                TextSpan(
-                                  style: TextStyle(color: Colors.white),
-                                  children: [
-                                    TextSpan(
-                                      text: "New brand \n",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(text: "182 brands")
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                children: const [
+                  CategoryItem(),
+                  CategoryItem(),
+                  CategoryItem(),
+                  CategoryItem(),
+                  CategoryItem(),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: const [
+                  BannerItem(
+                    category: "New Brands",
+                    image: "assets/images/banner_1.png",
+                    numBrands: 182,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: SizedBox(
-                      width: 242,
-                      height: 100,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Stack(
-                          children: [
-                            Image.asset(
-                              "images/banner_1.png",
-                              fit: BoxFit.cover,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      const Color(0xff343434).withOpacity(0.4),
-                                      const Color(0xff343434).withOpacity(0.15)
-                                    ]),
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 10),
-                              child: Text.rich(
-                                TextSpan(
-                                  style: TextStyle(color: Colors.white),
-                                  children: [
-                                    TextSpan(
-                                      text: "New brand \n",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(text: "182 brands")
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                  BannerItem(
+                    category: "Seconds Brands",
+                    image: "assets/images/banner_1.png",
+                    numBrands: 15,
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 30,
             ),
+            SectionTitle(text: "VIP elanlar", press: () {})
           ],
         ),
       ),
